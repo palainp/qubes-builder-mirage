@@ -59,7 +59,7 @@ dist-package:
 	export OPAMFETCH_LOG_FD=9 && \
 	mirage configure -t xen && \
 	make depends && \
-	dune build
+	make
 
 dist-copy-out:
 	mkdir -p $(BUILDER_REPO_DIR)
