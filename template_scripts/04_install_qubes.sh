@@ -68,16 +68,16 @@ if [ -z "$MIRAGE_KERNEL_PATH" ]; then
 fi
 
 cp "$MIRAGE_KERNEL_PATH" "$INSTALLDIR/boot/kernel"
-mkdir "$INSTALLDIR/boot/grub"
+mkdir "$INSTALLDIR/boot/grub2"
 # pvgrub legacy configuration
-cp "$SCRIPTSDIR/menu.lst" "$INSTALLDIR/boot/grub/menu.lst"
+cp "$SCRIPTSDIR/menu.lst" "$INSTALLDIR/boot/grub2/menu.lst"
 if [ "0$TEMPLATE_ROOT_WITH_PARTITIONS" -eq 1 ]; then
-    sed -i -e 's/(hd0)/(hd0,0)/' "$INSTALLDIR/boot/grub/menu.lst"
+    sed -i -e 's/(hd0)/(hd0,0)/' "$INSTALLDIR/boot/grub2/menu.lst"
 fi
 # pvgrub2 configuration
-cp "$SCRIPTSDIR/grub.cfg" "$INSTALLDIR/boot/grub/grub.cfg"
+cp "$SCRIPTSDIR/grub.cfg" "$INSTALLDIR/boot/grub2/grub.cfg"
 if [ "0$TEMPLATE_ROOT_WITH_PARTITIONS" -eq 1 ]; then
-    sed -i -e 's/(hd0)/(hd0,msdos1)/' "$INSTALLDIR/boot/grub/menu.lst"
+    sed -i -e 's/(hd0)/(hd0,msdos1)/' "$INSTALLDIR/boot/grub2/menu.lst"
 fi
 
 # =============================================================================
